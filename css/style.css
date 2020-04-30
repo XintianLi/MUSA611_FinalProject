@@ -1,0 +1,16 @@
+#map {
+  position:absolute;
+  right: 0px;
+  left: 320px;
+  height: 100%;
+  top: 0px;
+}
+
+.sidebar {
+  position:absolute;
+  left:0px;
+  width:320px;
+  height:100%;
+  top:0px;
+  background-color: red
+}
