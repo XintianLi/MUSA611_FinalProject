@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- mapbox included -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body>
+    <!-- sidebar -->
+    <!-- style="position: absolute; top:0; left: 0; width: 400px; height: 100%; background-color: red" -->
+    <div class="sidebar" >
+        <div class='text' id="originalIntro" >
+          <h1 id="title">Coronavirus (COVID-19) Cases in Philadelphia</h1>
+          <p id="description">This website shows the Coronavirus cases in the Philadelphia City until April 1st. The choropleth shows the number of cases in each zip code. Please click on the Next button to learn more about the condtions of the global pandemic in Philly.</p>
+        </div>
+        <div id="functionalConfig">
+          <button id="nextButton"> Next&raquo;</button>
+          <button id="previousButton" style="display:none;">&laquo;Previous</button>
+          <footer >
+            <a  onkeyup=""href="https://www.phila.gov/programs/coronavirus-disease-2019-covid-19/the-citys-response/monitoring-and-testing/" target="_blank">Data Source</a>
+          </footer>
+        </div>
+
+    </div>
+    <!-- map -->
+    <div id="map">
+        <h1 style="z-depth:1">IM A MAP</h1>
+    </div>
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="js/final.js"></script>
+  </body>
+</html>
