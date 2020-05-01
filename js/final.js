@@ -1,5 +1,7 @@
 
 var landUseUniqueList = [];
+var propertiesUniqueList = [];
+
 
 var map = L.map('map', {
   center: [40.000, -75.1090],
@@ -18,28 +20,37 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 // import Recreation Assets data
 var dataset="https://gist.githubusercontent.com/XintianLi/01972fc74f62309f7aef678d725d5e8a/raw/eb1c37279f47fb4b073d110469603ff7eff7bcf9/Philly_RecreationAssets.geojson"
 var featureGroup;
-
+var parsedData;
+// .bindPopup(eachPopUp)
 $(document).ready(function() {
   $.ajax(dataset).done(function(data){
     parsedData = JSON.parse(data);
-    eachFeatureFunction(parsedData);
+    eachFeatureLandUse(parsedData);
     featureGroup = L.geoJson(parsedData,{
       style:myStyle,
       onEachFeature:interactions
     }).addTo(map);
-    // featureGroup.eachLayer(eachFeatureFunction);
+    featureGroup.eachLayer(eachPopUp);
+    propertiesUniqueList = Object.keys(parsedData.features[0].properties)
+    console.log(parsedData);
+    console.log(featureGroup) 
+    console.log(propertiesUniqueList)
   })
+  // why global variables does not work out of the ajax call?
+  // console.log(parsedData);
+  // console.log(featureGroup);
 });
 
-
-var eachFeatureFunction = function(data){
+var eachFeatureLandUse = function(data){
   for(var i = 0; i<data.features.length; i++){
     if(landUseUniqueList.indexOf(data.features[i].properties.PPR_USE) == -1){
       landUseUniqueList.push(data.features[i].properties.PPR_USE);
-      console.log(data.features[i].properties.PPR_USE);
+      // console.log(data.features[i].properties.PPR_USE);
     }
   }
 }
+
+
 
 var isPark = function(landUse){
   if (landUse.indexOf('PARK') != -1){
@@ -48,6 +59,8 @@ var isPark = function(landUse){
     console.log("Not a Park!")
   }
 }
+
+
 
 var getColor = function(landUse){
   if (landUse.indexOf("PARK") != -1) {
@@ -98,9 +111,9 @@ var getColor = function(landUse){
 var myStyle = function(feature){
   return{
     fillColor: getColor(feature.properties.PPR_USE),
-    fillOpacity: 0.8,
+    fillOpacity: 0.7,
     color:"white",
-    weight:1,
+    weight:3,
     opacity:0.8
   }
 }
@@ -114,10 +127,6 @@ var highlightFeature = function(e){
     dashArray: '',
     fillOpacity:1
   });
-
-  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge){
-    layer.bringToFront();
-  }
 
 }
 
@@ -135,4 +144,11 @@ var interactions = function(feature,layer){
     mouseout: resetHighlight,
     click:zoomToFeature
   })
+}
+
+// popup function
+var eachPopUp = function(layer){
+  layer.bindPopup(`Name:${layer.feature.properties.ASSET_NAME}<br>
+  Address:${layer.feature.properties.ADDRESS}<br>
+  Zip Code:${layer.feature.properties.ZIPCODE}`)
 }
