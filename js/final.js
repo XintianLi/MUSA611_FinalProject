@@ -24,7 +24,8 @@ $(document).ready(function() {
     parsedData = JSON.parse(data);
     eachFeatureFunction(parsedData);
     featureGroup = L.geoJson(parsedData,{
-      style:myStyle
+      style:myStyle,
+      onEachFeature:interactions
     }).addTo(map);
     // featureGroup.eachLayer(eachFeatureFunction);
   })
@@ -104,24 +105,34 @@ var myStyle = function(feature){
   }
 }
 
+// highlight function
+var highlightFeature = function(e){
+  var layer = e.target;
+  layer.setStyle({
+    weight:5,
+    color:"#f03b20",
+    dashArray: '',
+    fillOpacity:1
+  });
 
-//   switch (layer.feature.properties.PPR_USE) {
-//     case "ATHLETIC": return "";
-//       break;
-//     case "BOATHOUSE": return "";
-//       break;
-//     case "COMMUNITY_PARK": return "";
-//       break;
-//     case "CONCESSIONS_RETAIL_CAFE": return "";
-//       break;
-//     case "ENVIRONMENTAL_EDUCATION_CENTER": return "";
-//       break;
-//     case "FARM": return "";
-//       break;
-//     case "GARDEN": return "";
-//       break;
-//     case "GOLF": return "";
-//       break;
-//       GREENHOUSE_NURSERY
-//   }
-// }
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge){
+    layer.bringToFront();
+  }
+
+}
+
+var resetHighlight = function(e){
+  featureGroup.resetStyle(e.target)
+}
+
+var zoomToFeature = function(e){
+  map.fitBounds(e.target.getBounds());
+}
+
+var interactions = function(feature,layer){
+  layer.on({
+    mouseover:highlightFeature,
+    mouseout: resetHighlight,
+    click:zoomToFeature
+  })
+}
