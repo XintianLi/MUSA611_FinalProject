@@ -22,7 +22,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var dataset="https://gist.githubusercontent.com/XintianLi/01972fc74f62309f7aef678d725d5e8a/raw/eb1c37279f47fb4b073d110469603ff7eff7bcf9/Philly_RecreationAssets.geojson"
 var featureGroup;
 var parsedData;
-// .bindPopup(eachPopUp)
+
 $(document).ready(function() {
   // get the value in the url
   getTextValue();
@@ -188,5 +188,5 @@ function getTextValue() {
 //      alert(parName+"="+parValue);
 //   }
 
-  paraValue = decodeURI(parameterStr.split("=")[1]);
+  // paraValue = decodeURI(parameterStr.split("=")[1]);
 }
