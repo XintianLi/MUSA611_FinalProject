@@ -150,5 +150,7 @@ var interactions = function(feature,layer){
 var eachPopUp = function(layer){
   layer.bindPopup(`Name:${layer.feature.properties.ASSET_NAME}<br>
   Address:${layer.feature.properties.ADDRESS}<br>
-  Zip Code:${layer.feature.properties.ZIPCODE}`)
+  Zip Code:${layer.feature.properties.ZIPCODE}<br>
+  Area: ${layer.feature.properties.SQ_FEET}<br>
+  Type:${layer.feature.properties.PPR_USE}`)
 }
