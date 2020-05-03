@@ -1,22 +1,56 @@
+html {
+  box-sizing: border-box;
+  font-family: "Nothing You Could Do";
+}
+
+html,body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 #map {
   position:absolute;
   right: 0px;
-  left: 320px;
-  height: 100%;
+  left: 25%;
+  height: 90%;
+  top: 10%;
+}
+
+.searchBox{
+  position: fixed;
+  left: 0;
+  width: 25%;
+  height: 20%;
+  top: 10%;
+  background-color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 9998;
+}
+
+.banner {
+  position: fixed;
+  width: 100%;
+  height: 10%;
+  left: 0px;
   top: 0px;
+  background: #FF3C5F;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index:9999
 }
 
 .sidebar {
   position:absolute;
   left:0px;
-  width:320px;
-  height:100%;
-  top:0px;
-  background-color:gray
+  width:25%;
+  height:70%;
+  top:30%;
+  background-color:gray;
+  overflow-y:auto;
 }
 
 .w3-card-4,.w3-hover-shadow:hover{
-  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19)
+  box-shadow:0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
 }
 
 .w3-button:hover{
@@ -41,6 +75,7 @@
 .w3-center{
   text-align:center!important;
   background-color: lightsteelblue;
+  margin: 14px 0px 14px;
 }
 
 /* some color */
@@ -72,3 +107,6 @@
 .w3-pale-green,.w3-hover-pale-green:hover{color:#000!important;background-color:#ddffdd!important}
 .w3-pale-yellow,.w3-hover-pale-yellow:hover{color:#000!important;background-color:#ffffcc!important}
 .w3-pale-blue,.w3-hover-pale-blue:hover{color:#000!important;background-color:#ddffff!important}
+
+
+
