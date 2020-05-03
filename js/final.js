@@ -1,6 +1,7 @@
 
 var landUseUniqueList = [];
 var propertiesUniqueList = [];
+var paraValue;
 
 
 var map = L.map('map', {
@@ -23,6 +24,10 @@ var featureGroup;
 var parsedData;
 // .bindPopup(eachPopUp)
 $(document).ready(function() {
+  // get the value in the url
+  getTextValue();
+  console.log("paraValue = "+paraValue);
+
   $.ajax(dataset).done(function(data){
     parsedData = JSON.parse(data);
     eachFeatureLandUse(parsedData);
@@ -153,4 +158,35 @@ var eachPopUp = function(layer){
   Zip Code:${layer.feature.properties.ZIPCODE}<br>
   Area: ${layer.feature.properties.SQ_FEET}<br>
   Type:${layer.feature.properties.PPR_USE}`)
+}
+
+
+// get url parameter
+function getTextValue() {
+  //get url
+  var myUrl = location.href;
+  // alert(myUrl); 
+
+ //get string after ?
+  var parameterStr = myUrl.split("?")[1]; 
+ //split the string and get the array
+  // var parArray = parameterStr.split("&");
+
+  //for loop get the elements for each  
+//  for (var i = 0; i<parArray.length; i++){  
+//     var parameter = parArray[i]; 
+
+//      //split the string by =
+//       var parName = parameter.split("=")[0]; 
+//      //parameter name
+//       parName = decodeURI(parName); 
+
+//      var parValue = parameter.split("=")[1];
+//       // decode
+//       parValue = decodeURI(parValue); 
+
+//      alert(parName+"="+parValue);
+//   }
+
+  paraValue = decodeURI(parameterStr.split("=")[1]);
 }
