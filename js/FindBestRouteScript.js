@@ -11,4 +11,47 @@ var map = L.map('map', {
       zoomOffset: -1,
       accessToken: 'pk.eyJ1IjoieGludGlhbiIsImEiOiJjazh1bGtkOXMwY2h4M25wYXh2d3J5NGpzIn0.6f78lOG9zSD3Iicqt6nXqQ'
   }).addTo(map);
+
+
+var state = {
+    position:{
+        marker:null,
+        updated: null
+    }
+}
+
+var goToOrigin = _.once(function(lat, lng) {
+map.flyTo([lat, lng], 14);
+});
+
+
+var updatePosition = function(lat, lng, updated) {
+    if (state.position.marker) { map.removeLayer(state.position.marker); }
+    state.position.marker = L.marker([lat, lng], {color: "blue"});
+    state.position.updated = updated;
+    state.position.marker.addTo(map);
+    goToOrigin(lat, lng);
+};
   
+$("#current-location").click(function(e){
+    console.log(e);
+    $("#starting-point").val("Your Current Location");
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          updatePosition(position.coords.latitude, position.coords.longitude, position.timestamp);
+        });
+      } else {
+        alert("Unable to access geolocation API!");
+      }
+})
+
+$("#search-route").keyup(function(e){
+    if ($("#starting-point").val().length===0) {
+        
+    }
+})
+
+$("#search-route").click(function(e){
+
+
+})
