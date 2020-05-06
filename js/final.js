@@ -228,12 +228,12 @@ function createDiv(landName,divname){
 $(`#${divname}`).append(html);
 }
 
-<<<<<<< HEAD
+
 $("button").click(function(e){
   console.log(e)
 })
 
-=======
+
 var subFeatureGroup = [];
 
 function search(){
@@ -285,4 +285,4 @@ function search(){
 });
 
 }
->>>>>>> 44fbb1c9e1c3073559e124c9707af094d96a411c
+
