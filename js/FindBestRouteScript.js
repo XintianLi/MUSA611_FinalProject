@@ -78,9 +78,10 @@ var findStartCoords = function(placeName){
         var dat= e;
         var placeCoord=[dat.features[0].center[0],dat.features[0].center[1]];
         placeCoords.push(placeCoord);
-        console.log(placeCoord);
+        console.log(placeCoord)
         return placeCoord;
     })
+
 }
 
 var findDestCoords = function(dest){
@@ -89,7 +90,7 @@ var findDestCoords = function(dest){
         var dat= e;
         var placeCoord=[dat.features[0].center[0],dat.features[0].center[1]];
         placeCoords.push(placeCoord);
-        console.log(placeCoord)
+        console.log(placeCoord);
         return placeCoord;
     })
 } 
