@@ -113,21 +113,39 @@ var findRoute = function(O,D){
 
     if(O == "Your Current Location"){
         OCoords = state.startingPosition.latlnglist;
+        route_lat_long = `${OCoords[1]},${OCoords[0]};${DCoodrs[0]},${DCoodrs[1]}`;
     }else{
         OCoords = findStartCoords(O);
+        route_lat_long = `${OCoords[0]},${OCoords[1]};${DCoodrs[0]},${DCoodrs[1]}`;
     }
-    console.log();
 
-    route_lat_long = `${OCoords[1]},${OCoords[0]};${DCoodrs[0]},${DCoodrs[1]}`;
+    console.log();
     console.log(route_lat_long);
 
     var route =`https://api.mapbox.com/directions/v5/mapbox/walking/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
-    $.ajax(route).done(function(e){
-        var geometry = e.routes[0].geometry;
-        var polyline = require('@mapbox/polyline');
-        var linestring=polyline.toGeoJSON(geometry);
-        L.geoJSON(linestring).addTo(map);
-    })
+    console.log(route);
+    // $.ajax(route).done(function(e){
+    //     var geometry = e.routes[0].geometry;
+    //     var polyline = require('@mapbox/polyline');
+    //     var linestring=polyline.toGeoJSON(geometry);
+    //     L.geoJSON(linestring).addTo(map);
+    // })
+    $.ajax(route).done(function(data){
+        var parsedData = JSON.parse(JSON.stringify(data));
+        var code = parsedData.routes[0].geometry;
+        console.log(code);
+        geoJson = polyline.toGeoJSON(code);
+        console.log(geoJson);
+        var myStyle = {
+            "color": "#ff7800",
+            "weight": 5,
+            "opacity": 0.65
+        };
+
+        L.geoJSON(geoJson, {
+            style: myStyle
+        }).addTo(map);
+        });
 
 }
 
