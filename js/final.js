@@ -190,3 +190,40 @@ function getTextValue() {
 
   // paraValue = decodeURI(parameterStr.split("=")[1]);
 }
+
+function cleanDiv(divname){
+  $(`#${divname}`).html("");
+}
+
+function createDiv(landName,divname){
+  var html = `<div class="card-continer">
+  <div class="card">
+    <h2>${landName}</h2>
+    <i class="fas fa-arrow-right"></i>
+    <p>a lonely trip.</p>
+    <div class="pic"></div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <button>
+    </button>
+  </div>
+</div>`
+$(`#${divname}`).append(html);
+}
