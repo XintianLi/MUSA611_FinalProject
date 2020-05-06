@@ -227,3 +227,8 @@ function createDiv(landName,divname){
 </div>`
 $(`#${divname}`).append(html);
 }
+
+$("button").click(function(e){
+  console.log(e)
+})
+
