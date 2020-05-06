@@ -71,27 +71,40 @@ $('#dest').keyup(function(e) {
 
 
 var placeCoords=[];
+var placeCoord;
 
 var findStartCoords = function(placeName){
     var coords = `https://api.mapbox.com/geocoding/v5/mapbox.places/${placeName}.json?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`
-    $.ajax(coords).done(function(e){
+    $.ajax({
+        url: coords,
+        type: "get",
+        dataType: "json",
+        async: false,
+        success: function(e){
         var dat= e;
-        var placeCoord=[dat.features[0].center[0],dat.features[0].center[1]];
-        placeCoords.push(placeCoord);
-        console.log(placeCoord);
-        return placeCoord;
-    })
+        placeCoord=[dat.features[0].center[0],dat.features[0].center[1]];
+        // placeCoords.push(placeCoord);
+        }
+    });
+    console.log(placeCoord);
+    return placeCoord;
 }
 
 var findDestCoords = function(dest){
     var coords = `https://api.mapbox.com/geocoding/v5/mapbox.places/${dest}.json?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`
-    $.ajax(coords).done(function(e){
+    $.ajax({
+        url: coords,
+        type: "get",
+        dataType: "json",
+        async: false,
+        success: function(e){
         var dat= e;
-        var placeCoord=[dat.features[0].center[0],dat.features[0].center[1]];
-        placeCoords.push(placeCoord);
-        console.log(placeCoord)
-        return placeCoord;
-    })
+        placeCoord=[dat.features[0].center[0],dat.features[0].center[1]];
+        // placeCoords.push(placeCoord);
+        }
+    });
+    console.log(placeCoord);
+    return placeCoord;
 } 
 
 var findRoute = function(O,D){
@@ -103,8 +116,10 @@ var findRoute = function(O,D){
     }else{
         OCoords = findStartCoords(O);
     }
+    console.log();
 
     route_lat_long = `${OCoords[1]},${OCoords[0]};${DCoodrs[0]},${DCoodrs[1]}`;
+    console.log(route_lat_long);
 
     var route =`https://api.mapbox.com/directions/v5/mapbox/walking/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
     $.ajax(route).done(function(e){
