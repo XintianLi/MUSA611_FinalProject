@@ -227,3 +227,55 @@ function createDiv(landName,divname){
 </div>`
 $(`#${divname}`).append(html);
 }
+
+var subFeatureGroup = [];
+
+function search(){
+  cleanDiv("sidebar");
+  var zip,landUse;
+  if($("#searchZipcode")){
+    zip = $("#searchZipcode").val();
+  }
+
+  if($("#searchLanduse")){
+    landUse = $("#searchLanduse").val();
+  }
+
+  subFeatureGroup = [];
+
+  $.ajax({
+    url: dataset,
+    type: "get",
+    dataType: "json",
+    async: false,
+    success: function(e){
+      // add elements
+      for(var i = 0; i<e.features.length; i++){
+        if(zip == undefined && landUse != undefined){
+          if(e.features[i].properties.PPR_USE.indexOf(landUse) != -1){
+            subFeatureGroup.push(e.features[i]);
+          }
+        }
+        if(landUse == undefined && zip != undefined){
+          if(e.features[i].properties.ZIPCODE == zip){
+            subFeatureGroup.push(e.features[i]);
+          }
+        }
+        if(landUse == undefined && zip == undefined){
+          subFeatureGroup = [];
+          alert("Both Null");
+        }
+        if(zip != undefined && landUse != undefined){
+          if(e.features[i].properties.ZIPCODE == zip && e.features[i].properties.PPR_USE.indexOf(landUse) != -1){
+            subFeatureGroup.push(e.features[i]);
+          }
+        }
+      }
+
+      for(var i = 0; i<subFeatureGroup.length; i++){
+        createDiv(subFeatureGroup[i].properties.PPR_USE,"sidebar")
+      }
+    }
+});
+
+}
