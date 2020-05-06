@@ -122,26 +122,11 @@ var findRoute = function(O,D){
     console.log();
     console.log(route_lat_long);
 
-<<<<<<< HEAD
-    var route =`https://api.mapbox.com/directions/v5/mapbox/driving/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
-    $.ajax(route).done(function(e){
-        var geometry = e.routes[0].geometry;
-        var polyline = require('@mapbox/polyline');
-        var linestring=polyline.toGeoJSON(geometry);
-        L.geoJSON(linestring).addTo(map);
-    })
-=======
     var route =`https://api.mapbox.com/directions/v5/mapbox/walking/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
     console.log(route);
-    // $.ajax(route).done(function(e){
-    //     var geometry = e.routes[0].geometry;
-    //     var polyline = require('@mapbox/polyline');
-    //     var linestring=polyline.toGeoJSON(geometry);
-    //     L.geoJSON(linestring).addTo(map);
-    // })
     $.ajax(route).done(function(data){
-        var parsedData = JSON.parse(JSON.stringify(data));
-        var code = parsedData.routes[0].geometry;
+        // var parsedData = JSON.parse(JSON.stringify(data));
+        var code = data.routes[0].geometry;
         console.log(code);
         geoJson = polyline.toGeoJSON(code);
         console.log(geoJson);
@@ -151,12 +136,11 @@ var findRoute = function(O,D){
             "opacity": 0.65
         };
 
-        L.geoJSON(geoJson, {
+        state.route=L.geoJSON(geoJson, {
             style: myStyle
         }).addTo(map);
         });
 
->>>>>>> 80510ce3f3bc0e0dabc7d1c80092f590de109b1d
 }
 
 $("#clear").click(function(e){
@@ -172,7 +156,10 @@ $("#clear").click(function(e){
         state.destPosition.marker=null
         state.destPosition.latlnglist=null;
         state.destPosition.updated=null;
-    }    
+    }  
+    if (state.route){
+        map.removeLayer(route);
+    }  
     console.log(state);
 })
 
@@ -180,15 +167,4 @@ $("#search-route").click(function(e){
     var dest = $("#dest").val();
     var start = $("#starting-point").val();
     findRoute(start,dest);
-    // if (state.startingPosition.marker){
-    //     var dest = $("#dest").val();
-    //     findDestCoords(dest);
-    //     route_lat_lng =`${state.startingPosition.marker._latlng.lng},${state.startingPosition.marker._latlng.lat};${placeCoords[0]},${placeCoords[1]}`;
-    //     console.log( route_lat_lng)
-    //     console.log(placeCoords )
-    //     // findRoute(route_lat_lng)
-    //     // var destination = L.marker([placeCoords[1],placeCoords[0]])
-    //     // destination.addTo(map)
-    // }
-
 })
