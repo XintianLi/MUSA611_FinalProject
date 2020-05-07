@@ -38,7 +38,7 @@ $(document).ready(function() {
     featureGroup.eachLayer(eachPopUp);
     propertiesUniqueList = Object.keys(parsedData.features[0].properties)
     console.log(parsedData);
-    console.log(featureGroup) 
+    console.log(featureGroup)
     console.log(propertiesUniqueList)
   })
   // why global variables does not work out of the ajax call?
@@ -165,25 +165,25 @@ var eachPopUp = function(layer){
 function getTextValue() {
   //get url
   var myUrl = location.href;
-  // alert(myUrl); 
+  // alert(myUrl);
 
  //get string after ?
-  var parameterStr = myUrl.split("?")[1]; 
+  var parameterStr = myUrl.split("?")[1];
  //split the string and get the array
   // var parArray = parameterStr.split("&");
 
-  //for loop get the elements for each  
-//  for (var i = 0; i<parArray.length; i++){  
-//     var parameter = parArray[i]; 
+  //for loop get the elements for each
+//  for (var i = 0; i<parArray.length; i++){
+//     var parameter = parArray[i];
 
 //      //split the string by =
-//       var parName = parameter.split("=")[0]; 
+//       var parName = parameter.split("=")[0];
 //      //parameter name
-//       parName = decodeURI(parName); 
+//       parName = decodeURI(parName);
 
 //      var parValue = parameter.split("=")[1];
 //       // decode
-//       parValue = decodeURI(parValue); 
+//       parValue = decodeURI(parValue);
 
 //      alert(parName+"="+parValue);
 //   }
@@ -228,9 +228,11 @@ function createDiv(landName,divname){
 $(`#${divname}`).append(html);
 }
 
+
 $("button").click(function(e){
   console.log(e)
 })
+
 
 var subFeatureGroup = [];
 
