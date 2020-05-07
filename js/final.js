@@ -24,6 +24,13 @@ var featureGroup;
 var parsedData;
 
 $(document).ready(function() {
+  //set function
+  $('.post-module').hover(function() {
+    $(this).find('.description').stop().animate({
+      height: "toggle",
+      opacity: "toggle"
+    }, 300);
+  });
   // get the value in the url
   getTextValue();
   console.log("paraValue = "+paraValue);
@@ -221,7 +228,7 @@ function createDiv(landName,divname){
       <li></li>
     </ul>
 
-    <button>
+    <button onclick="popUp(${landName}">
     </button>
   </div>
 </div>`
@@ -229,9 +236,10 @@ $(`#${divname}`).append(html);
 }
 
 
-$("button").click(function(e){
-  console.log(e)
-})
+function popUp(landName){
+  $("#post-content > h1").text(landName);
+  $("#myModal").appendTo("body").modal('show');
+}
 
 
 var subFeatureGroup = [];

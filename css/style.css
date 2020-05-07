@@ -275,7 +275,7 @@ i {
 
 /* 出现半圆变化 */
 .card-continer .card:hover button {
-  transform: scale(10.5);
+  transform: scale(14.5);
 }
 
 .card-continer .card:hover p {

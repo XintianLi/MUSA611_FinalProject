@@ -126,7 +126,8 @@ body {
   height: auto !important;
   opacity: 1 !important;
 }
-.container {
+
+/* .container {
   max-width: 800px;
   min-width: 640px;
   margin: 0 auto;
@@ -151,4 +152,4 @@ body {
   font-size: 18px;
   font-weight: bold;
   text-transform: uppercase;
-}
+} */
