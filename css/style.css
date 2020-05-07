@@ -202,12 +202,14 @@ i {
 
 /* word */
 .card-continer .card h2 {
+  left: 20%;
   z-index: 101;
   font-family: "Poppins", sans-serif;
   position: absolute;
   bottom: 0;
-  right: 67px;
-  font-size: 36px;
+  right: 21%;
+  font-size: 25px;
+  text-align: right;
   font-weight: 700;
   color: #fff;
 }
