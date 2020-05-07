@@ -271,6 +271,7 @@ function search(){
         if(landUse == "" && zip == ""){
           subFeatureGroup = [];
           alert("Both Null");
+          break;
         }
         if(zip != "" && landUse != ""){
           if(e.features[i].properties.ZIPCODE == zip && e.features[i].properties.PPR_USE.indexOf(landUse) != -1){
