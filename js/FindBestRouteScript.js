@@ -1,3 +1,5 @@
+var urlLat,urlLng;
+
 var map = L.map('map', {
     center: [40.000, -75.1090],
     zoom: 12
@@ -39,6 +41,27 @@ var updatePosition = function(lat, lng, updated) {
     state.startingPosition.marker.addTo(map);
     goToOrigin(lat, lng);
 };
+
+$(document).ready(function(){
+    // console.log(e);    
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        updatePosition(position.coords.latitude, position.coords.longitude, position.timestamp);
+            
+        //read the parameter
+        if(location.href.indexOf('?lng=') != -1){
+                // get the value in the url
+                getTextValue();
+                console.log("paraValue = "+urlLng+urlLat);
+                routeFindByCoord(urlLng,urlLat);
+            }
+        });
+        
+        $("#starting-point").val("Your Current Location");
+      } else {
+        alert("Unable to access geolocation API!");
+      }
+});
   
 $("#current-location").click(function(e){
     // console.log(e);    
@@ -119,7 +142,6 @@ var findRoute = function(O,D){
         route_lat_long = `${OCoords[0]},${OCoords[1]};${DCoodrs[0]},${DCoodrs[1]}`;
     }
 
-    console.log();
     console.log(route_lat_long);
 
     var route =`https://api.mapbox.com/directions/v5/mapbox/walking/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
@@ -141,6 +163,32 @@ var findRoute = function(O,D){
         }).addTo(map);
         });
 
+}
+
+function routeFindByCoord(coordInUrl){
+
+    OCoords = state.startingPosition.latlnglist;
+    route_lat_long = `${OCoords[1]},${OCoords[0]};${urlLng},${urlLat}`;
+    console.log(route_lat_long);
+
+    var route =`https://api.mapbox.com/directions/v5/mapbox/walking/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
+    console.log(route);
+    $.ajax(route).done(function(data){
+        // var parsedData = JSON.parse(JSON.stringify(data));
+        var code = data.routes[0].geometry;
+        console.log(code);
+        geoJson = polyline.toGeoJSON(code);
+        console.log(geoJson);
+        var myStyle = {
+            "color": "#ff7800",
+            "weight": 5,
+            "opacity": 0.65
+        };
+
+        state.route=L.geoJSON(geoJson, {
+            style: myStyle
+        }).addTo(map);
+        });
 }
 
 $("#clear").click(function(e){
@@ -168,3 +216,13 @@ $("#search-route").click(function(e){
     var start = $("#starting-point").val();
     findRoute(start,dest);
 })
+
+function getTextValue() {
+    //get url
+    var myUrl = location.href;
+
+    var parameterStr = myUrl.split("?")[1];
+    console.log(parameterStr);
+    urlLng = parameterStr.split("&")[0].split("=")[1];
+    urlLat = parameterStr.split("&")[1].split("=")[1];
+}

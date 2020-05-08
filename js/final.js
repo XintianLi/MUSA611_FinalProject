@@ -1,4 +1,3 @@
-
 var landUseUniqueList = [];
 var propertiesUniqueList = [];
 var paraValue;
@@ -24,6 +23,15 @@ var featureGroup;
 var parsedData;
 
 $(document).ready(function() {
+  //read the parameter
+  if(location.href.indexOf('?val=') != -1){
+    // get the value in the url
+    getTextValue();
+    console.log("paraValue = "+paraValue);
+    $("#searchLanduse").val(paraValue);
+    search();
+  }
+
   //set function
   $('.post-module').hover(function() {
     $(this).find('.description').stop().animate({
@@ -31,9 +39,6 @@ $(document).ready(function() {
       opacity: "toggle"
     }, 300);
   });
-  // get the value in the url
-  getTextValue();
-  console.log("paraValue = "+paraValue);
 
   $.ajax(dataset).done(function(data){
     parsedData = JSON.parse(data);
@@ -195,14 +200,14 @@ function getTextValue() {
 //      alert(parName+"="+parValue);
 //   }
 
-  // paraValue = decodeURI(parameterStr.split("=")[1]);
+  paraValue = decodeURI(parameterStr.split("=")[1]);
 }
 
 function cleanDiv(divname){
   $(`#${divname}`).html("");
 }
 
-function createDiv(landName,divname){
+function createDiv(landName,divname,lng,lat){
   var html = `<div class="card-continer">
   <div class="card">
     <h2>${landName}</h2>
@@ -228,7 +233,7 @@ function createDiv(landName,divname){
       <li></li>
     </ul>
 
-    <button onclick="popUp(${landName}">
+    <button onclick="popUp('${landName}',${lng},${lat})">
     </button>
   </div>
 </div>`
@@ -236,9 +241,13 @@ $(`#${divname}`).append(html);
 }
 
 
-function popUp(landName){
+function popUp(landName,lng,lat){
   $("#post-content > h1").text(landName);
   $("#myModal").appendTo("body").modal('show');
+  document.getElementById("routeBtn").onclick = function(){
+    var myUrl="./findRoute.html"+"?"+"lng="+lng+"&lat="+lat;
+    window.location.assign(myUrl);
+  };
 }
 
 
@@ -289,7 +298,7 @@ function search(){
       }
 
       for(var i = 0; i<subFeatureGroup.length; i++){
-        createDiv(subFeatureGroup[i].properties.ASSET_NAME,"sidebar")
+        createDiv(subFeatureGroup[i].properties.ASSET_NAME,"sidebar",subFeatureGroup[i].geometry.coordinates[0][0][0],subFeatureGroup[i].geometry.coordinates[0][0][1])
       }
     }
 });
