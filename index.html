@@ -15,15 +15,19 @@
     <h2>Find your favourate places to go in Philly!</h2>
     <div calss="search"> 
       <!-- <input class = "searchBar" type="text" id="searchin" placeholder="Seacrh..." list="list" />  -->
-      <button class="button button1">Explore Your Tour!</button> 
-      <button class="button button2">Find Best Route!</button> 
+          <button class="button" id="button1">Explore Your Tour!</button> 
+      <button class="button" id="button2">Find Best Route!</button> 
     </div>
   </div>
 </div>
 
-<h1 class="heading" >“TAKE ONLY MEMORIES, LEAVE ONLY FOOTPRINTS.” ------ CHIEF SEATTLE</h1>
+<h1 class="heading" >“The world is a book and those who do not travel read only a page.” ----- Saint Augustine</h1>
 
 <div class="rightSidebar">
+  <span>
+    <a href="./img/arrow.png"></a>
+    <p>Click here!</p>
+  </span>
   <div class="card-container">
 
     <div class="card" style="--image: url('../img/park.jpg'); --angle: -5deg; --x: 5%; --y: 15%; --caption: 'Park'" onclick="sendVal('PARK')"></div>
@@ -38,7 +42,7 @@
 </div>
 
 <!-- partial -->
-  <script  src="js/indexScript.js"></script>
-
-</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script  src="js/indexScript.js"></script>
+  </body>
 </html>

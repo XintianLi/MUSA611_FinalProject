@@ -53,9 +53,7 @@ $(document).ready(function() {
     console.log(featureGroup)
     console.log(propertiesUniqueList)
   })
-  // why global variables does not work out of the ajax call?
-  // console.log(parsedData);
-  // console.log(featureGroup);
+
 });
 
 var eachFeatureLandUse = function(data){
