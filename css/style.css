@@ -41,6 +41,26 @@ html,body{
   margin: 10px;
 }
 
+.searchBox .container .button {
+  position:relative;
+  left: 5%;
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Raleway',sans-serif;
+  font-variant: normal;
+  font-weight: bold; 
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 8px;
+  background-color: #FFD43C; /* Yellow */
+  margin-right: 20px;
+}
+
 .banner {
   position: fixed;
   width: 100%;
@@ -50,6 +70,31 @@ html,body{
   background: #FF3C5F;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   z-index:100;
+}
+
+.banner h1{
+  left: 1%;
+  right: 80%;
+  font-size: 23px;
+  position: absolute;
+  top: 6%;
+  color: white;
+}
+
+.banner .routeText{
+  position: absolute;
+  right: 4%;
+  top: 30%;
+  font-size: 20px;
+  color: white;
+}
+
+.banner .homeText{
+  position: absolute;
+  right: 20%;
+  top: 30%;
+  font-size: 20px;
+  color: white;
 }
 
 .sidebar {
@@ -285,3 +330,5 @@ i {
 .card-continer .card:hover .pic {
   filter: grayscale(0);
 }
+
+

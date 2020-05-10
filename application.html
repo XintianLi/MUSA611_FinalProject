@@ -16,14 +16,19 @@
   </head>
   <body>
     <!-- banner -->
-    <div class="banner"></div>
+    <div class="banner">
+      <h1>Favourite Places in PHILADELPHIA</h1>
+      <a class="homeText"  href="./index.html">Home</a>
+      <a class="routeText" href="./findRoute.html">Find Best Route!</a>
+    </div>
 
     <!-- search box -->
     <div class="searchBox">
       <div class="container">
         <input class = "box" type="text" id="searchZipcode" placeholder="input the zipcode" list="list" /> 
         <input class = "box" type="text" id="searchLanduse" placeholder="input the landUse" list="list" /> 
-        <button id = "searchButton" onclick="search()">search</button>
+        <button class="button" id = "searchButton" onclick="search()">Search</button>
+        <button class="button" id = "resetButton" onclick="reset()">Reset</button>
       </div>
     </div>
     <!-- search box end -->
