@@ -5,10 +5,16 @@ function sendVal(val) {
     window.location.assign(myUrl);
  }
 
- function goApp(){
-    window.location.assign("./application.html");
+ var ChangePage = function(){
+    window.location.href="./findRoute.html";
+
  }
 
- function goRoute(){
-    window.location.assign("./findRoute.html");
- }
+//  document.getElementById('button1').addEventListener("click", ChangePage);
+$('#button1').click(function(e){
+    window.location.href="./application.html"
+})
+
+$('#button2').click(function(e){
+    window.location.href="./findRoute.html"
+})
