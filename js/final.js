@@ -210,8 +210,8 @@ function createDiv(landName,divname,lng,lat){
   <div class="card">
     <h2>${landName}</h2>
     <i class="fas fa-arrow-right"></i>
-    <p>a lonely trip.</p>
-    <div class="pic"></div>
+    <p>The best trip!</p>
+    <div class="pic" id = "${landName.split(" ")[0]}"></div>
     <ul>
       <li></li>
       <li></li>
@@ -235,7 +235,48 @@ function createDiv(landName,divname,lng,lat){
     </button>
   </div>
 </div>`
+
 $(`#${divname}`).append(html);
+
+switch(landName){
+  case "Schuylkill Banks":
+    $("#Schuylkill").css("background-image","url('./img/Schuylkill_Banks.jpg')")
+    break;
+  case "Orthodox Street Parcel":
+    $("#Orthodox").css("background-image","url('./img/Orthodox_Street_Parcel.jpg')")
+    break;
+  case "82nd & Lyons Park":
+    $("#82nd").css("background-image","url('./img/82nd_Lyons_Park.jpg')")
+    break;
+  case "Cobbs Creek & Karakung Golf Course":
+    $("#Cobbs").css("background-image","url('./img/Cobbs_Creek.jpg')")
+  case "Juniata Golf Course":
+    $("#Juniata").css("background-image","url('./img/Juniata_Golf_Course.jpg')")
+  case "Walnut Lane Golf Course":
+    $("#Walnut").css("background-image","url('./img/Walnut_Lane_Golf_Course.jpeg')")
+  case "Lincoln Pool Building":
+    $("#Lincoln").css("background-image","url('./img/Lincoln_Pool_Building.jpg')")
+  case "Alberta Morris Pool":
+    $("#Alberta").css("background-image","url('./img/Alberta_Morris_Pool.jpeg')")
+  case "Hartranft Pool":
+    $("#Hartranft").css("background-image","url('./img/Hartranft.jpg')")
+  case "Kelly Pool":
+    $("#Kelly").css("background-image","url('./img/Kelly.jpg')")
+  case "James O'Connor Memorial Pool Building 1":
+    $("#James").css("background-image","url('./img/James.jpeg')")
+  case "Mummers Museum":
+    $("#Mummers").css("background-image","url('./img/Mummers_Museum.jpg')")
+  case "Rodin Museum Building":
+    $("#Rodin").css("background-image","url('./img/RodinMuseum.jpg')")
+  case "Philadelphia Museum of Art Building":
+    $("#Philadelphia").css("background-image","url('./img/PhiladelphiaMuseumOfArt.jpg')")
+  case "Memorial Area":
+    $("#Memorial").css("background-image","url('./img/memorialplaza.jpg')")
+  case "Barnes Foundation Museum":
+    $("#Barnes").css("background-image","url('./img/barnes.jpg')")
+  default:
+    break;
+}
 }
 
 
@@ -296,9 +337,21 @@ function search(){
       }
 
       for(var i = 0; i<subFeatureGroup.length; i++){
-        createDiv(subFeatureGroup[i].properties.ASSET_NAME,"sidebar",subFeatureGroup[i].geometry.coordinates[0][0][0],subFeatureGroup[i].geometry.coordinates[0][0][1])
+        try{
+        createDiv(subFeatureGroup[i].properties.ASSET_NAME,"sidebar",subFeatureGroup[i].geometry.coordinates[0][0][0],subFeatureGroup[i].geometry.coordinates[0][0][1]);
+        }
+        catch(e){
+          
+        }
+
       }
     }
 });
 
+}
+
+function reset(){
+  cleanDiv("sidebar");
+  $("#searchLanduse").val("");
+  $("#searchZipcode").val("");
 }
