@@ -190,3 +190,29 @@ body {
 }
 
 
+img{
+  /* position: absolute; */
+  width:12%;
+  height:4%;
+  /* top: 250px; */
+  /* right:250px; */
+  
+}
+
+#clickhere{
+  color: white;
+  font-family: "Great Vibes", cursive; 
+  font-size: 15px; 
+  font-weight: 500; 
+  line-height: 32px; 
+  position: relative;
+  top:-5px;
+
+}
+
+#intro{
+  position: relative;
+  top: 60px;
+  left:150px;
+  z-index: 99999999;
+}
