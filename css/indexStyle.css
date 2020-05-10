@@ -37,10 +37,10 @@ body {
   margin: 2vmin 3vmin;
   color: white; 
   font-family: 'Trocchi', serif; 
-  font-size: 30px; 
+  font-size: 25px; 
   font-weight: normal; 
-  line-height: 80px; margin: 0;
-  text-align: right;
+  line-height: 50px; margin: 0;
+  text-align: center;
 }
 
 
@@ -108,40 +108,42 @@ body {
 .rightSidebar{
   position:absolute;
   top: 30px;
-  left: 1400px;
+  left: 1200px;
 }
 
 .leftSidebar {
   position:absolute;
-  left:300px;
-  width:600px;
+  left:200px;
+  width:800px;
   height:100%;
   top:0px;
 }
 
 .container{
   position: absolute;
-  top: 22%;
+  top: 23%;
+  background:rgba(47, 46, 46, 0.15);
+
 }
 
 .container>h1{
   color: #ffffff;
   font-family: 'Raleway',sans-serif;
-  font-size: 38px;
-  font-weight: 80px;
-  line-height: 53px;
-  margin: 22px 36px 22px;
+  font-size: 52px;
+  font-weight: 75px;
+  line-height: 63px;
+  margin: 22px 40px 22px;
   text-align: left;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .container>h2{
   color: #f8f8f8; 
   font-family: "Great Vibes", cursive; 
-  font-size: 18px; 
+  font-size: 20px; 
   font-weight: 500; 
   line-height: 32px; 
-  margin: 32px 36px 32px;
+  margin: 32px 40px 32px;
   text-align: left;
 }
 
@@ -153,45 +155,35 @@ body {
 
 
 
-.button1 {
+.button {
+  border: none;
+  color: white;
+  padding: 8px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Raleway',sans-serif;
+  font-variant: normal;
+  font-weight: bold; 
+  font-size: 20px;
+  margin: 30px 40px 30px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 8px;
+
+}
+
+
+#button1 {
   background-color: #FFD43C; /* Green */
-  border: none;
-  color: white;
-  padding: 8px 18px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: Helvetica; 
-  font-variant: normal;
-  font-weight: bold; 
-  font-size: 16px;
-  margin: 22px 36px 22px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  border-radius: 8px;
+  }
 
-}
-
-
-.button2 {
+#button2 {
   background-color: #FF3C5F; /* Green */
-  border: none;
-  color: white;
-  padding: 8px 18px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-family: Helvetica; 
-  font-variant: normal;
-  font-weight: bold; 
-  font-size: 16px;
-  margin: 22px 36px 22px;
-  cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
-  border-radius: 8px;
-}
+  position: relative;
+  left:60px
+  }
 
 .button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);

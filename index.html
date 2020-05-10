@@ -13,32 +13,36 @@
   <div class="container">
     <h1>A Personal Tour Guide to the Sights of Philadelphia</h1>
     <h2>Find your favourate places to go in Philly!</h2>
-    <div calss="search"> 
+    <div calss="search">
       <!-- <input class = "searchBar" type="text" id="searchin" placeholder="Seacrh..." list="list" />  -->
-      <button class="button button1" onclick="goApp()">Explore Your Tour!</button> 
-      <button class="button button2" onclick="goRoute()">Find Best Route!</button> 
+      <button class="button button1" onclick="goApp()">Explore Your Tour!</button>
+      <button class="button button2" onclick="goRoute()">Find Best Route!</button>
     </div>
   </div>
 </div>
 
-<h1 class="heading" >“TAKE ONLY MEMORIES, LEAVE ONLY FOOTPRINTS.” ------ CHIEF SEATTLE</h1>
+<h1 class="heading" >“The world is a book and those who do not travel read only a page.” ----- Saint Augustine</h1>
 
 <div class="rightSidebar">
+  <span>
+    <a href="./img/arrow.png"></a>
+    <p>Click here!</p>
+  </span>
   <div class="card-container">
 
     <div class="card" style="--image: url('../img/park.jpg'); --angle: -5deg; --x: 5%; --y: 15%; --caption: 'Park'" onclick="sendVal('PARK')"></div>
-   
+
     <div class="card" style="--image: url('../img/pool.jpg'); --angle: -1deg; --x: -10%; --y: -20%; --caption: 'Pool'" onclick="sendVal('POOL')"></div>
-   
+
     <div class="card" style="--image: url('../img/museum.jpg'); --angle: -4deg; --x: -20%; --y: 5%; --caption: 'Museum'" onclick="sendVal('MUSEUM')"></div>
-   
+
     <div class="card" style="--image: url('../img/golf.jpg'); --angle: 7deg; --x: 10%; --y: -7%; --caption: 'Golf'" onclick="sendVal('GOLF')"></div>
-   
+
    </div>
 </div>
 
 <!-- partial -->
-  <script  src="js/indexScript.js"></script>
-
-</body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script  src="js/indexScript.js"></script>
+  </body>
 </html>
