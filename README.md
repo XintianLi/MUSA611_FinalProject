@@ -1,4 +1,4 @@
-# MUSA611_FinalProject
+# MUSA611_FinalProject: An Activity Finder For the Philadelphia City
 
 Hi this is the Final Project for the MUSA 611 JavaScript for Planning and Design Students. This project is a group work of **ZhuangQian** and **Xintian Li**.
 
