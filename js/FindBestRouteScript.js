@@ -163,8 +163,10 @@ var findRoute = function(O,D){
             state.route=L.geoJSON(geoJson, {
                 style: myStyle
             }).addTo(map);
-            L.marker([OCoords[0], OCoords[1]], {color: "blue"}).addTo(map);
-            L.marker([DCoodrs[0], DCoodrs[1]], {color: "blue"}).addTo(map);
+            state.startingPosition.marker2=L.marker([OCoords[1], OCoords[0]], {color: "blue"}).addTo(map);
+            state.destPosition.marker=L.marker([DCoodrs[1], DCoodrs[0]], {color: "blue"})
+            state.startingPosition.marker2.addTo(map);
+            state.destPosition.marker.addTo(map);
         }
     });
     // console.log(state.route);
@@ -211,16 +213,27 @@ $("#clear").click(function(e){
         state.startingPosition.updated=null;
         $("#starting-point").val(null);
     }   
+    if (state.startingPosition.marker2) {
+        map.removeLayer(state.startingPosition.marker2);
+        state.startingPosition.marker2=null;
+        // state.startingPosition.latlnglist=null;
+        // state.startingPosition.updated=null;
+        $("#starting-point").val(null);
+    } 
     if (state.destPosition.marker) {
         map.removeLayer(state.destPosition.marker);
         state.destPosition.marker=null
         state.destPosition.latlnglist=null;
         state.destPosition.updated=null;
+        $("#dest").val(null);
     }  
     if (state.route){
         map.removeLayer(state.route);
     }  
     // console.log(state);
+    // map.eachLayer(function (layer) {
+    //     map.removeLayer(layer);
+    // });
 })
 
 $("#search-route").click(function(e){
