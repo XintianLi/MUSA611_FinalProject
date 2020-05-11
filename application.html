@@ -17,7 +17,7 @@
   <body>
     <!-- banner -->
     <div class="banner">
-      <h1>Favourite Places in PHILADELPHIA</h1>
+      <h1><span style="color: #FF3C5F;">Favourite Places</span> in PHILADELPHIA</h1>
       <a class="homeText"  href="./index.html">Home</a>
       <a class="routeText" href="./findRoute.html">Find Best Route!</a>
     </div>
@@ -25,8 +25,15 @@
     <!-- search box -->
     <div class="searchBox">
       <div class="container">
-        <input class = "box" type="text" id="searchZipcode" placeholder="input the zipcode" list="list" /> 
-        <input class = "box" type="text" id="searchLanduse" placeholder="input the landUse" list="list" /> 
+        <!-- <input class = "box" type="text" id="searchZipcode" placeholder="input the zipcode" list="list" />  -->
+        <!-- <input class = "box" type="text" id="searchLanduse" placeholder="input the landUse" list="list" />  -->
+        <div class="input-group input-group-sm mb-3">
+          <input type="text" class="form-control box" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="searchZipcode" placeholder="input the zipcode" list="list">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+          <input type="text" class="form-control box" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="searchLanduse" placeholder="input the landUse" list="list">
+        </div>
+        
         <button class="button" id = "searchButton" onclick="search()">Search</button>
         <button class="button" id = "resetButton" onclick="reset()">Reset</button>
       </div>
@@ -120,9 +127,9 @@
               <!-- Post Content-->
               <div class="post-content" id = "post-content">
                 <div class="category">Photos</div>
-                <h1 class="title">City Lights in New York</h1>
+                <h1 class="title">City Lights in Philadelphia</h1>
                 <h2 class="sub_title">The city that never sleeps.</h2>
-                <p class="description">New York, the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
+                <p class="description">Philadelphia, one of the largest city in the U.S., is an architectural marvel with plenty of historic monuments, magnificent buildings and countless dazzling skyscrapers.</p>
               </div>
             </div>
 
