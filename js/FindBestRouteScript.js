@@ -43,11 +43,11 @@ var updatePosition = function(lat, lng, updated) {
 };
 
 $(document).ready(function(){
-    // console.log(e);    
+       
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
         updatePosition(position.coords.latitude, position.coords.longitude, position.timestamp);
-            
+        // console.log(location.href)
         //read the parameter
         if(location.href.indexOf('?lng=') != -1){
                 // get the value in the url
@@ -126,8 +126,9 @@ var findDestCoords = function(dest){
         // placeCoords.push(placeCoord);
         }
     });
-    console.log(placeCoord);
+    // console.log(placeCoord);
     return placeCoord;
+
 } 
 
 var findRoute = function(O,D){
@@ -137,52 +138,63 @@ var findRoute = function(O,D){
     if(O == "Your Current Location"){
         OCoords = state.startingPosition.latlnglist;
         route_lat_long = `${OCoords[1]},${OCoords[0]};${DCoodrs[0]},${DCoodrs[1]}`;
+        // L.marker([DCoodrs[0], DCoodrs[1]], {color: "blue"}).addTo(map); why here not work?
     }else{
         OCoords = findStartCoords(O);
         route_lat_long = `${OCoords[0]},${OCoords[1]};${DCoodrs[0]},${DCoodrs[1]}`;
     }
 
-    console.log(route_lat_long);
-
-    var route =`https://api.mapbox.com/directions/v5/mapbox/walking/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
-    console.log(route);
-    $.ajax(route).done(function(data){
-        // var parsedData = JSON.parse(JSON.stringify(data));
-        var code = data.routes[0].geometry;
-        console.log(code);
-        geoJson = polyline.toGeoJSON(code);
-        console.log(geoJson);
-        var myStyle = {
-            "color": "#ff7800",
-            "weight": 5,
-            "opacity": 0.65
-        };
-
-        state.route=L.geoJSON(geoJson, {
-            style: myStyle
-        }).addTo(map);
-        });
+    // console.log(route_lat_long);
+    var route =`https://api.mapbox.com/directions/v5/mapbox/driving/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
+ 
+    $.ajax({
+        url: route,
+        type: "get",
+        dataType: "json",
+        async: false,
+        success: function(e){
+            var code = e.routes[0].geometry;
+            geoJson = polyline.toGeoJSON(code);
+            var myStyle = {
+                "color": "#FFD43C",
+                "weight": 5,
+                "opacity": 0.8
+            };
+            state.route=L.geoJSON(geoJson, {
+                style: myStyle
+            }).addTo(map);
+            L.marker([OCoords[0], OCoords[1]], {color: "blue"}).addTo(map);
+            L.marker([DCoodrs[0], DCoodrs[1]], {color: "blue"}).addTo(map);
+        }
+    });
+    // console.log(state.route);
+    return (state.route);
+    // try end
 
 }
+
+
+
+
 
 function routeFindByCoord(coordInUrl){
 
     OCoords = state.startingPosition.latlnglist;
     route_lat_long = `${OCoords[1]},${OCoords[0]};${urlLng},${urlLat}`;
-    console.log(route_lat_long);
+    // console.log(route_lat_long);
 
     var route =`https://api.mapbox.com/directions/v5/mapbox/walking/${route_lat_long}?access_token=pk.eyJ1IjoibnppbW1lcm1hbiIsImEiOiJjanR1NTBjeWMwZTBlM3lsbXU2d3BtYThzIn0.R0mxkEoHLh-xKk7oG0Tqxg`;
     console.log(route);
     $.ajax(route).done(function(data){
         // var parsedData = JSON.parse(JSON.stringify(data));
         var code = data.routes[0].geometry;
-        console.log(code);
+        // console.log(code);
         geoJson = polyline.toGeoJSON(code);
-        console.log(geoJson);
+        // console.log(geoJson);
         var myStyle = {
-            "color": "#ff7800",
+            "color": "#FFD43C",
             "weight": 5,
-            "opacity": 0.65
+            "opacity": 0.8
         };
 
         state.route=L.geoJSON(geoJson, {
@@ -206,9 +218,9 @@ $("#clear").click(function(e){
         state.destPosition.updated=null;
     }  
     if (state.route){
-        map.removeLayer(route);
+        map.removeLayer(state.route);
     }  
-    console.log(state);
+    // console.log(state);
 })
 
 $("#search-route").click(function(e){

@@ -107,13 +107,13 @@ body {
 
 .rightSidebar{
   position:absolute;
-  top: 30px;
-  left: 1200px;
+  top: 6%;
+  left: 80%;
 }
 
 .leftSidebar {
   position:absolute;
-  left:200px;
+  left:15%;
   width:800px;
   height:100%;
   top:0px;
@@ -121,7 +121,7 @@ body {
 
 .container{
   position: absolute;
-  top: 23%;
+  top: 25%;
   background:rgba(47, 46, 46, 0.15);
 
 }
@@ -182,7 +182,7 @@ body {
 #button2 {
   background-color: #FF3C5F; /* Green */
   position: relative;
-  left:60px
+  left:20%;
   }
 
 .button:hover {

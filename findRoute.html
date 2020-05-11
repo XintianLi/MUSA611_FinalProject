@@ -14,15 +14,33 @@
   <body>
     <!-- banner -->
     <div class="banner">
-
+      <h1>Favourite Places in PHILADELPHIA</h1>
+      <a class="homeText"  href="./index.html">Home</a>
+      <a class="filterText" href="./application.html">Explore   Your Tour!</a>
     </div>
     <!-- banner end -->
+
     <!-- user interface -->
     <div id="ui">
-      <label class="labels" for ="starting-point" style="z-index: 9999;">Enter a starting point or click on the icon to get your current location.</label>
-      <input id='starting-point' placeholder="Type in a starting point" type="text">
-      <button id="current-location">Find where you are</button>
-      <input id='dest' placeholder="Type in a destination" type="text">
+      <!-- <label class="labels" for ="starting-point" style="z-index: 9999;">Enter a starting point or click on the icon to get your current location.</label> -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">A</span>
+        </div>
+        <input id='starting-point' type="text" class="form-control" placeholder="Type in a starting point" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">B</span>
+        </div>
+        <input id='dest' type="text" class="form-control" placeholder="Type in a destination" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+
+      <button id="current-location" type="button" class="btn btn-warning">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 16" width="12" height="16"><path fill-rule="evenodd" d="M6 0C2.69 0 0 2.5 0 5.5 0 10.02 6 16 6 16s6-5.98 6-10.5C12 2.5 9.31 0 6 0zm0 14.55C4.14 12.52 1 8.44 1 5.5 1 3.02 3.25 1 6 1c1.34 0 2.61.48 3.56 1.36.92.86 1.44 1.97 1.44 3.14 0 2.94-3.14 7.02-5 9.05zM8 5.5c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"></path></svg>
+      </button>
+      
+  
       <button id="search-route">Search the Best Route</button>
       <button id="clear">Clear</button>
   </div>
